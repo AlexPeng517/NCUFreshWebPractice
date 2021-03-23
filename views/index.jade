@@ -1,0 +1,41 @@
+doctype html
+html
+	head
+		link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous") 
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		title= 'Blog System'
+	body
+		div(style='float:left')
+			a(href='/')
+				button.btn.btn-outline-dark(type='button') Home
+
+		div(style='float:right')
+			if (username && authenticated)
+				a(href='/users/signout', style='margin:10px;')
+					button.btn.btn-outline-dark(type='button') Sign Out
+				a(href='/users/add_article', style='margin:10px;')
+					button.btn.btn-outline-dark(type='button') Add Article
+				a(href='/users/profile', style='margin:10px;')
+					button.btn.btn-outline-dark(type='button') Profile
+				span #{username}
+			else
+				a(href='/users/signin', style='margin:10px;') 
+					button.btn.btn-outline-dark(type='button') Log In
+				a(href='/users/register', style='margin:10px;')
+					button.btn.btn-outline-dark(type='button') Register
+				a(href='/users/forget', style='margin:10px;')
+					button.btn.btn-outline-dark(type='button') Forgot password
+	
+	div(style='padding:50px;')
+		h1= title
+
+	for article in blogs
+		div
+			div(style='float:left;margin-top:10px;')= article.Username
+			div(style='float:right;margin-top:10px;')= article.CreateDate
+			br
+			div(style='clear:both')= article.Article
+				a(href='/users/message/'+article.id, style='float:right;margin-top:105px;margin-right:20px;')
+					button.btn.btn-outline-dark(type='button') Leave a message
+			hr(style='margin-top:110px;')

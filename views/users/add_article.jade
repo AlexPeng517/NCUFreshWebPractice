@@ -1,0 +1,33 @@
+  
+doctype html
+html
+	head
+		link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous") 
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		title= Login
+	body
+		div(style='float:left;margin:10px;')
+			a(href='/') Home
+	
+		div(style='float:right')
+			if (username && authenticated)
+				a(href='/users/signout', style='margin:10px;') Sign Out
+				a(href='/users/profile', style='margin:10px;') Profile
+				span #{username}
+			else
+				a(href='/users/register', style='margin:10px;') Register
+				a(href='/users/signin', style='margin:10px;') Log In
+				
+		div(style='padding:50px;')
+			form(name="add", action="/apis/add", method="post")
+				h1 Add Article
+				div
+					p
+						span Writer: 
+						label(style='padding-right:50px') #{username}
+					p
+						textarea(cols="50", rows="25", style='resize : none;', name="Content")
+					div
+						span(style='padding-right:377px')
+						input(type="submit", name="submit", value="Save")

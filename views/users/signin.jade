@@ -1,0 +1,33 @@
+doctype html
+html
+	head
+		link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous") 
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		title= Login
+	body
+		div(style='float:left;margin:0px;')
+			a(href='/')
+				button.btn.btn-outline-dark(type='button') Home
+	
+		div(style='float:right')
+				a(href='/users/register', style='margin:10px;') 
+					button.btn.btn-outline-dark(type='button') Register
+				//a(href='/users/forget', style='margin:10px;') 	
+					//button.btn.btn-outline-dark(type='button') Forgot password
+			
+		div(style='padding:80px;')
+			form(name="login", action="/apis/login", method="post")
+				h1 Login
+				div
+					p
+						label(style='padding-right:50px') Username or E-mail
+						input(type="text",id = "username" name="username", placeholder='username@example.com')
+					p
+						label(style='padding-right:125px')  Password
+						input(type="password", id = "passwd", name="passwd")
+				p
+					span 
+						a(href='/users/forget', style='padding-right:175px')
+							button.btn.btn-outline-dark(type='button') Forgot password
+					input(type="submit", name="submit", value="login")
